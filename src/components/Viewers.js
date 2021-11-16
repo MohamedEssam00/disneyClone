@@ -56,6 +56,12 @@ const Container = styled.div`
 	display: grid;
 	grid-gap: 25px;
 	grid-template-columns: repeat(5, minmax(0, 1fr));
+	@media screen and (max-width: 768px) {
+		grid-gap: 10px;
+		padding: 15px 0 20px;
+
+
+	}
 `;
 
 const Wrap = styled.div`
@@ -73,6 +79,12 @@ const Wrap = styled.div`
 		rgb(0 0 0 / 73%) 0px 16px 10px -10px;
 	cursor: pointer;
 	transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+	@media screen and (max-width: 768px) {
+		width: 85px;
+		display: flex;
+		align-items: center;
+		margin: 10px;
+	}
 	img {
 		width: 85%;
 		height: 35%;

@@ -1,8 +1,7 @@
 import React, {useEffect} from "react";
 import styled from "styled-components";
-import {useHistory} from "react-router-dom";
-// import { useNavigation } from 'react-router-dom';
-import firebase from "firebase";
+import {useHistory, Link} from "react-router-dom";
+import Home from "../components/Home";
 import {
 	selectUserName,
 	selectUserPhoto,
@@ -17,7 +16,7 @@ export default function Header() {
 	const userPhoto = useSelector(selectUserPhoto);
 	const dispatch = useDispatch();
 	const history = useHistory();
-	// const navigation = useNavigation();
+
 	useEffect(() => {
 		auth.onAuthStateChanged(async (user) => {
 			if (user) {
@@ -28,14 +27,13 @@ export default function Header() {
 						userPhoto: user.photoURL,
 					})
 				);
-				history.push("/");
 			}
 		});
 	}, []);
 	const signIn = () => {
 		auth.signInWithPopup(provider).then((result) => {
 			let user = result.user;
-			console.log(result.user);
+			history.push("/home");
 			dispatch(
 				setUserLogin({
 					name: user.displayName,
@@ -43,22 +41,29 @@ export default function Header() {
 					photo: user.photoURL,
 				})
 			);
-			history.push("/");
 		});
 	};
 	const signOut = () => {
 		auth.signOut().then(() => {
 			dispatch(setSignOut());
-			history.push("/login");
 		});
+		history.push("/");
 	};
+
 	return (
 		<div>
 			<Nav>
 				<Logo src="/images/logo.svg" alt="" />
 				{!userName ? (
 					<LoginContainer>
-						<Login onClick={signIn}>Login</Login>
+						<Login
+							onClick={() => {
+								signIn();
+							}}
+						>
+							Login
+						</Login>
+						{/* </Link> */}
 					</LoginContainer>
 				) : (
 					<>
@@ -185,3 +190,7 @@ const LoginContainer = styled.div`
 	display: flex;
 	justify-content: flex-end;
 `;
+
+// @media screen and (max-width: 768px) {
+// 	visibility: visible;
+// }
