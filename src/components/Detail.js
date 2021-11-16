@@ -44,10 +44,7 @@ export default Detail;
 const Container = styled.div`
 	min-height: calc(100vh - 70px);
 	padding: 0 calc(3.5vw + 5px);
-	@media screen and (max-width: 768px) {
-		width: 768px;
-		
-	}
+	
 `;
 const Background = styled.div`
 	position: fixed;
@@ -56,12 +53,21 @@ const Background = styled.div`
 	bottom: 0;
 	right: 0;
 	z-index: -1;
-	/* opacity: 0.8; */
+	@media screen and (max-width: 768px) {
+		display: flex;
+		flex: 1;
+		width: 500px;
+		height: 100vh;
+		background-size: cover;
+		background-position: center;
+		overflow-x: hidden;
+	}
 	img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 	}
+	
 `;
 
 const ImageTitle = styled.div`

@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import styled from "styled-components";
-import {useHistory, Link} from "react-router-dom";
-import Home from "../components/Home";
+import {useHistory} from "react-router-dom";
 import {
 	selectUserName,
 	selectUserPhoto,
@@ -63,12 +62,11 @@ export default function Header() {
 						>
 							Login
 						</Login>
-						{/* </Link> */}
 					</LoginContainer>
 				) : (
 					<>
 						<NavMenu>
-							<a>
+							<a href="/home">
 								<img src="images/home-icon.svg" alt="" />
 								<span>HOME</span>
 							</a>
@@ -119,15 +117,16 @@ const NavMenu = styled.div`
 	flex: 1;
 	margin-left: 20px;
 	align-items: center;
-	/* a:hover {
-      background-color: rgba(255,255,255,0.2);
-      cursor: pointer;
-    } */
 	a {
 		display: flex;
 		align-items: center;
 		padding: 0 12px;
 		cursor: pointer;
+		text-decoration: none;
+		&:visited {
+			text-decoration: none;
+			color: #fff;
+		}
 		img {
 			height: 20px;
 		}
@@ -166,6 +165,11 @@ const UserImg = styled.img`
 	height: 40px;
 	border-radius: 40%;
 	cursor: pointer;
+	@media screen and(max-width: 768px) {
+		width: 40px;
+		height: 40px;
+		border-radius: 40%;
+	}
 `;
 
 const Login = styled.div`
@@ -190,7 +194,3 @@ const LoginContainer = styled.div`
 	display: flex;
 	justify-content: flex-end;
 `;
-
-// @media screen and (max-width: 768px) {
-// 	visibility: visible;
-// }

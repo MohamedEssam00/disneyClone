@@ -59,8 +59,6 @@ const Container = styled.div`
 	@media screen and (max-width: 768px) {
 		grid-gap: 10px;
 		padding: 15px 0 20px;
-
-
 	}
 `;
 

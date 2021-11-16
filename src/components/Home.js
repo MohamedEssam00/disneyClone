@@ -30,4 +30,10 @@ const Container = styled.main`
 		bottom: 0;
 		z-index: -1;
 	}
+	@media screen and (max-width: 768px) {
+		width: 99%;
+		padding: 25px;
+		overflow-x: hidden;
+
+	}
 `;
